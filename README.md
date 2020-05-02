@@ -58,12 +58,6 @@ If you want to customize the view used to render this tile, run this command:
 php artisan vendor:publish --provider="VineVax\UptimeRobotTile\UptimeRobotTileServiceProvider" --tag="dashboard-uptime-robot-tile-views"
 ```
 
-## Testing
-
-``` bash
-composer test
-```
-
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
