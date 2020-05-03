@@ -43,7 +43,15 @@ class UptimeRobotStore
 
     public function monitors(): array
     {
-        return collect($this->tile->getData('monitors'))->map(function ($item, $key) {
+        $monitors = collect($this->tile->getData('monitors'));
+
+        if (!empty(config('dashboard.tiles.uptimerobot.monitors'))) {
+            $monitors = $monitors->filter(function ($item, $key) {
+                return in_array($item['id'], config('dashboard.tiles.uptimerobot.monitors'));
+            });
+        }
+
+        return $monitors->map(function ($item, $key) {
             $item['badge'] = $this->badges[$item['status']];
             $item['status'] = $this->statuses[$item['status']];
             return $item;

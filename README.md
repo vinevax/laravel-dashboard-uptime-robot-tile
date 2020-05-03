@@ -24,8 +24,10 @@ In the `dashboard` config file, you must add this configuration in the `tiles` k
 return [
     // ...
     'tiles' => [
+        /* Monitors should be an array with ids of your monitors you want to display */
         'uptimerobot' => [
-            'key' => env('UPTIMEROBOT_KEY')    
+            'key' => env('UPTIMEROBOT_KEY'),
+            'monitors' => []
         ]   
     ]   
 ];
