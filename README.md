@@ -40,7 +40,7 @@ In `app/Console/Kernel.php` you should schedule the `VineVax\UptimeRobotTile\Com
     
         protected function schedule(Schedule $schedule)
         {
-            $schedule->command(VineVax\UptimeRobotTile\Commands\FetchUptimeRobotDataCommand::class)->everyFiveMinutes();
+            $schedule->command(\VineVax\UptimeRobotTile\Commands\FetchUptimeRobotDataCommand::class)->everyFiveMinutes();
         }
 ````
 
