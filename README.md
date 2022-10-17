@@ -27,7 +27,14 @@ return [
         /* Monitors should be an array with ids of your monitors you want to display */
         'uptimerobot' => [
             'key' => env('UPTIMEROBOT_KEY'),
-            'monitors' => []
+            'monitors' => [],
+            'monitor_types' => [
+                1 => 'HTTP(s)',
+                2 => 'Keyword',
+                3 => 'Ping',
+                4 => 'Port',
+                5 => 'Heartbeat'
+            ]
         ]   
     ]   
 ];

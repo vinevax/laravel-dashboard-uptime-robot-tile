@@ -11,7 +11,8 @@ class UptimeRobot
     public static function getMonitors(string $apiKey) : array
     {
         return Http::post(self::url . 'getMonitors', [
-            'api_key' => $apiKey
+            'api_key' => $apiKey,
+            'all_time_uptime_ratio' => 1
         ])->json()['monitors'];
     }
 }

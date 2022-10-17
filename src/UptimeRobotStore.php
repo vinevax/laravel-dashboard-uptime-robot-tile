@@ -17,11 +17,11 @@ class UptimeRobotStore
     ];
 
     private array $badges = [
-        0 => 'bg-blue-200 text-blue-700',
-        1 => 'bg-gray-200 text-gray-800',
-        2 => 'bg-green-200 text-green-700',
-        8 => 'bg-red-100 text-red-700',
-        9 => 'bg-red-200 text-red-900'
+        0 => ['bg-blue-200', 'text-blue-700'],
+        1 => ['bg-gray-200', 'text-gray-800'],
+        2 => ['bg-green-200', 'text-green-700'],
+        8 => ['bg-red-100', 'text-red-700'],
+        9 => ['bg-red-200', 'text-red-900']
     ];
 
     public static function make()
