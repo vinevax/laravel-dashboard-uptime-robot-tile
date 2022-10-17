@@ -44,6 +44,7 @@ class UptimeRobotStore
     public function monitors(): array
     {
         $monitors = collect($this->tile->getData('monitors'));
+        $monitorTypes = config('dashboard.tiles.uptimerobot.monitor_types');
 
         if (!empty(config('dashboard.tiles.uptimerobot.monitors'))) {
             $monitors = $monitors->filter(function ($item, $key) {
@@ -51,9 +52,10 @@ class UptimeRobotStore
             });
         }
 
-        return $monitors->map(function ($item, $key) {
+        return $monitors->map(function ($item, $key) use ($monitorTypes) {
             $item['badge'] = $this->badges[$item['status']];
             $item['status'] = $this->statuses[$item['status']];
+            $item['monitor_type'] = $monitorTypes[$item['type']];
             return $item;
         })->toArray() ?? [];
     }
