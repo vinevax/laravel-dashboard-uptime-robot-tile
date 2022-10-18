@@ -8,9 +8,9 @@ use VineVax\UptimeRobotTile\UptimeRobotStore;
 
 class FetchUptimeRobotDataCommand extends Command
 {
-    protected string $signature = 'dashboard:fetch-uptime-robot-data';
+    protected $signature = 'dashboard:fetch-uptime-robot-data';
 
-    protected string $description = 'Fetch Uptime Robot data';
+    protected $description = 'Fetch Uptime Robot data';
 
     public function handle()
     {

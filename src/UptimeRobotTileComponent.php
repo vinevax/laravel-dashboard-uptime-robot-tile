@@ -19,7 +19,7 @@ class UptimeRobotTileComponent extends Component
         $uptimeRobotStore = UptimeRobotStore::make();
 
         return view('dashboard-uptime-robot-tile::tile', [
-            'monitors' => $uptimeRobotStore->monitors()
+            'monitors' => $uptimeRobotStore->monitorsByStatus()
         ]);
     }
 }
