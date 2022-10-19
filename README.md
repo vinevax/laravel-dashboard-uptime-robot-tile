@@ -7,6 +7,8 @@ This tile can be used on [the Laravel Dashboard](https://docs.spatie.be/laravel-
 
 ![img](docs/screenshot.png)
 
+![img](docs/Capture.JPG)
+
 ## Installation
 
 You can install the package via composer:
