@@ -24,6 +24,14 @@ class UptimeRobotStore
         9 => ['bg-red-200', 'text-red-900']
     ];
 
+    public array $monitors = [
+        '❌ Down' => [],
+        '❓ Seems down' => [],
+        '❔ Not checked yet' => [],
+        '⏸ Paused' => [],
+        '✔ Up' => []
+    ];
+
     public static function make()
     {
         return new static();
@@ -71,16 +79,14 @@ class UptimeRobotStore
             });
         }
 
-        $monitorsArray = [];
-
         foreach ($monitors as $monitor) {
             $monitor['badge'] = $this->badges[$monitor['status']];
             $monitor['status'] = $this->statuses[$monitor['status']];
             $monitor['monitor_type'] = $monitorTypes[$monitor['type']];
-            $monitorsArray[$monitor['status']][] = $monitor;
+            $this->monitors[$monitor['status']][] = $monitor;
         }
 
-        return $monitorsArray;
+        return $this->monitors;
     }
 
     public function monitorsByType(): array

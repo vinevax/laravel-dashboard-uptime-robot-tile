@@ -24,32 +24,35 @@
     </script>
 
     <div>
-        <div class="grid grid-cols-7 card-scrollbar"
-             style="height:70vh;"
+        <div style="height:70vh;"
              x-data="{monitors: uptime_monitors}">
-            <template x-for="monitor in monitors">
-                <div class="uptime-card">
-                    <div class="text-xs grid grid-cols-2"
-                         x-init="$store.monitors.addBadgeClasses($el, monitor.badge)">
-                        <div class="pl-2 col-span-1"
-                             x-text="monitor.status"
-                        ></div>
-                        <div class="text-gray-900 text-xs text-right pr-1"
-                             x-text="Number(monitor.all_time_uptime_ratio).toFixed(2) + '% up'">
+            <template x-for="monitor_states in monitors">
+                <div x-show="(monitor_states.length > 0)"
+                     class="grid grid-cols-7 card-scrollbar">
+                    <template x-for="monitor in monitor_states"
+                              x-init="console.log((monitor_states.length > 0))">
+                        <div class="uptime-card">
+                            <div class="text-xs grid grid-cols-2"
+                                 x-init="$store.monitors.addBadgeClasses($el, monitor.badge)">
+                                <div class="pl-2 col-span-1"
+                                     x-text="monitor.status"
+                                ></div>
+                                <div class="text-gray-900 text-xs text-right pr-1"
+                                     x-text="Number(monitor.all_time_uptime_ratio).toFixed(2) + '% up'">
+                                </div>
+                            </div>
+                            <div class="bg-neutral-100 text-xs grid grid-cols-4">
+                                <div class="text-gray-900 bg-neutral-100 text-left pl-2 text-truncate col-span-3"
+                                     x-text="monitor.friendly_name">
+                                </div>
+                                <div class="text-gray-900 bg-neutral-100 text-right pr-2 text-truncate col-span-1"
+                                     x-text="monitor.monitor_type">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="bg-neutral-100 text-xs grid grid-cols-4">
-                        <div class="text-gray-900 bg-neutral-100 text-left pl-2 text-truncate col-span-3"
-                             x-text="monitor.friendly_name">
-                        </div>
-                        <div class="text-gray-900 bg-neutral-100 text-right pr-2 text-truncate col-span-1"
-                             x-text="monitor.monitor_type">
-                        </div>
-                    </div>
+                    </template>
                 </div>
             </template>
         </div>
-
     </div>
 </x-dashboard-tile>
