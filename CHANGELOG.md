@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-dashboard-uptime-robot-tile` will be documented in this file
 
+## 2.1.0 - 2022-11-02
+
+- Added additional blade view for multiple and filtered monitors 
+
 ## 2.0.0 - 2020-09-09
 
 - Updated to spatie/laravel-dashboard version 2

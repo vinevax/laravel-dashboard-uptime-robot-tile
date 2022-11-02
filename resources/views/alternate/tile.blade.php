@@ -48,8 +48,7 @@
             <template x-for="monitor_states in monitors">
                 <div x-show="(monitor_states.length > 0)"
                      class="grid grid-cols-7 card-scrollbar">
-                    <template x-for="monitor in monitor_states"
-                              x-init="console.log((monitor_states.length > 0))">
+                    <template x-for="monitor in monitor_states">
                         <div class="uptime-card">
                             <div class="text-xs grid grid-cols-2"
                                  x-init="$store.monitors.addBadgeClasses($el, monitor.badge)">
