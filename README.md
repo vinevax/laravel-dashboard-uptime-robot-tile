@@ -33,7 +33,7 @@ return [
             'blade' => 'original', // Or `multiple` for alternative tile
             'monitors' => [],
             'monitor_types' => [
-                1 => 'HTTP(s)',
+                1 => 'URL',
                 2 => 'Keyword',
                 3 => 'Ping',
                 4 => 'Port',
