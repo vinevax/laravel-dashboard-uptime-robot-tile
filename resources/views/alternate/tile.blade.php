@@ -9,6 +9,25 @@
             display: block;
             width: 90%
         }
+        /* custom scrollbar */
+        .card-scrollbar {
+            overflow: auto;
+        }
+        .card-scrollbar::-webkit-scrollbar {
+            width: 15px;
+        }
+        .card-scrollbar::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+        .card-scrollbar::-webkit-scrollbar-thumb {
+            background-color: var(--color-accent); /** from tailwind **/
+            border-radius: 20px;
+            border: 6px solid transparent;
+            background-clip: content-box;
+        }
+        .card-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: #a8bbbf;
+        }
     </style>
     <script>
         let uptime_monitors = @json($monitors);
