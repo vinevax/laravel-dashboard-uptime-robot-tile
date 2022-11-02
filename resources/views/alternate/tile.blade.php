@@ -37,9 +37,11 @@
                                 <div class="pl-2 col-span-1"
                                      x-text="monitor.status"
                                 ></div>
-                                <div class="text-gray-900 text-xs text-right pr-1"
-                                     x-text="Number(monitor.all_time_uptime_ratio).toFixed(2) + '% up'">
-                                </div>
+                                @if (config('dashboard.tiles.uptimerobot.uptime') === 1)
+                                    <div class="text-gray-900 text-xs text-right pr-1"
+                                         x-text="Number(monitor.all_time_uptime_ratio).toFixed(2) + '% up'">
+                                    </div>
+                                @endif
                             </div>
                             <div class="bg-neutral-100 text-xs grid grid-cols-4">
                                 <div class="text-gray-900 bg-neutral-100 text-left pl-2 text-truncate col-span-3"
