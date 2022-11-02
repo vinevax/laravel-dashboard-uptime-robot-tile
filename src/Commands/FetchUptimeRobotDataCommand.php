@@ -15,7 +15,8 @@ class FetchUptimeRobotDataCommand extends Command
     public function handle()
     {
         $montiors = UptimeRobot::getMonitors(
-            config('dashboard.tiles.uptimerobot.key')
+            config('dashboard.tiles.uptimerobot.key'),
+            config('dashboard.tiles.uptimerobot.uptime')
         );
 
         UptimeRobotStore::make()->setMonitors($montiors);

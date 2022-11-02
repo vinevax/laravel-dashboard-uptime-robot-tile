@@ -20,6 +20,7 @@ composer require vinevax/laravel-dashboard-uptime-robot-tile
 ## Usage
 
 In the `dashboard` config file, you must add this configuration in the `tiles` key.
+
 `````php
 // in config/dashboard.php
 
@@ -29,6 +30,7 @@ return [
         /* Monitors should be an array with ids of your monitors you want to display */
         'uptimerobot' => [
             'key' => env('UPTIMEROBOT_KEY'),
+            'blade' => 'original', // Or `multiple` for alternative tile
             'monitors' => [],
             'monitor_types' => [
                 1 => 'HTTP(s)',
@@ -36,7 +38,9 @@ return [
                 3 => 'Ping',
                 4 => 'Port',
                 5 => 'Heartbeat'
-            ]
+            ],
+            'sort_by' => 'status',
+            'uptime' => 1 // Set to 0 if fetching from Uptime Robot API lags
         ]   
     ]   
 ];
@@ -46,7 +50,7 @@ In `app/Console/Kernel.php` you should schedule the `VineVax\UptimeRobotTile\Com
 
 ````php
     // in app/console/Kernel.php
-    
+  
         protected function schedule(Schedule $schedule)
         {
             $schedule->command(\VineVax\UptimeRobotTile\Commands\FetchUptimeRobotDataCommand::class)->everyFiveMinutes();

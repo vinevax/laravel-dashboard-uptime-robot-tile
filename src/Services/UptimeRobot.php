@@ -8,11 +8,11 @@ class UptimeRobot
 {
     public const url = 'https://api.uptimerobot.com/v2/';
 
-    public static function getMonitors(string $apiKey) : array
+    public static function getMonitors(string $apiKey, int $performance) : array
     {
         return Http::post(self::url . 'getMonitors', [
             'api_key' => $apiKey,
-            'all_time_uptime_ratio' => 1
+            'all_time_uptime_ratio' => $performance
         ])->json()['monitors'];
     }
 }

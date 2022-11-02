@@ -89,26 +89,26 @@ class UptimeRobotStore
         return $this->monitors;
     }
 
-    public function monitorsByType(): array
-    {
-        $monitors = collect($this->tile->getData('monitors'));
-        $monitorTypes = config('dashboard.tiles.uptimerobot.monitor_types');
-
-        if (!empty(config('dashboard.tiles.uptimerobot.monitors'))) {
-            $monitors = $monitors->filter(function ($item, $key) {
-                return in_array($item['id'], config('dashboard.tiles.uptimerobot.monitors'));
-            });
-        }
-
-        $monitorsArray = [];
-
-        foreach ($monitors as $monitor) {
-            $monitor['badge'] = $this->badges[$monitor['status']];
-            $monitor['status'] = $this->statuses[$monitor['status']];
-            $monitor['monitor_type'] = $monitorTypes[$monitor['type']];
-            $monitorsArray[$monitor['monitor_type']][] = $monitor;
-        }
-
-        return $monitorsArray;
-    }
+//    public function monitorsByType(): array
+//    {
+//        $monitors = collect($this->tile->getData('monitors'));
+//        $monitorTypes = config('dashboard.tiles.uptimerobot.monitor_types');
+//
+//        if (!empty(config('dashboard.tiles.uptimerobot.monitors'))) {
+//            $monitors = $monitors->filter(function ($item, $key) {
+//                return in_array($item['id'], config('dashboard.tiles.uptimerobot.monitors'));
+//            });
+//        }
+//
+//        $monitorsArray = [];
+//
+//        foreach ($monitors as $monitor) {
+//            $monitor['badge'] = $this->badges[$monitor['status']];
+//            $monitor['status'] = $this->statuses[$monitor['status']];
+//            $monitor['monitor_type'] = $monitorTypes[$monitor['type']];
+//            $monitorsArray[$monitor['monitor_type']][] = $monitor;
+//        }
+//
+//        return $monitorsArray;
+//    }
 }
