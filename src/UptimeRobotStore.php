@@ -24,7 +24,7 @@ class UptimeRobotStore
         9 => ['bg-red-200', 'text-red-900']
     ];
 
-    public array $monitors = [
+    public array $monitorSortOrder = [
         '❌ Down' => [],
         '❓ Seems down' => [],
         '❔ Not checked yet' => [],
@@ -42,9 +42,9 @@ class UptimeRobotStore
         $this->tile = Tile::firstOrCreateForName("uptimeRobot");
     }
 
-    public function setMonitors(array $monitors): self
+    public function setMonitors(array $monitorSortOrder): self
     {
-        $this->tile->putData('monitors', $monitors);
+        $this->tile->putData('monitors', $monitorSortOrder);
 
         return $this;
     }
@@ -83,32 +83,9 @@ class UptimeRobotStore
             $monitor['badge'] = $this->badges[$monitor['status']];
             $monitor['status'] = $this->statuses[$monitor['status']];
             $monitor['monitor_type'] = $monitorTypes[$monitor['type']];
-            $this->monitors[$monitor['status']][] = $monitor;
+            $this->monitorSortOrder[$monitor['status']][] = $monitor;
         }
 
-        return $this->monitors;
+        return $this->monitorSortOrder;
     }
-
-//    public function monitorsByType(): array
-//    {
-//        $monitors = collect($this->tile->getData('monitors'));
-//        $monitorTypes = config('dashboard.tiles.uptimerobot.monitor_types');
-//
-//        if (!empty(config('dashboard.tiles.uptimerobot.monitors'))) {
-//            $monitors = $monitors->filter(function ($item, $key) {
-//                return in_array($item['id'], config('dashboard.tiles.uptimerobot.monitors'));
-//            });
-//        }
-//
-//        $monitorsArray = [];
-//
-//        foreach ($monitors as $monitor) {
-//            $monitor['badge'] = $this->badges[$monitor['status']];
-//            $monitor['status'] = $this->statuses[$monitor['status']];
-//            $monitor['monitor_type'] = $monitorTypes[$monitor['type']];
-//            $monitorsArray[$monitor['monitor_type']][] = $monitor;
-//        }
-//
-//        return $monitorsArray;
-//    }
 }
