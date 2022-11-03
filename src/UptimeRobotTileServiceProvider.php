@@ -18,10 +18,18 @@ class UptimeRobotTileServiceProvider extends ServiceProvider
             ]);
         }
 
+        $resourcePath = __DIR__ . '/../resources/views/';
+
+        if (config('dashboard.tiles.uptimerobot.blade') === 'original') {
+            $resourcePath .= 'original';
+        } else {
+            $resourcePath .= 'alternate';
+        }
+
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/dashboard-uptime-robot-tile'),
+            $resourcePath . '/' => resource_path('views/vendor/dashboard-uptime-robot-tile'),
         ], 'dashboard-uptime-robot-tile-views');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'dashboard-uptime-robot-tile');
+        $this->loadViewsFrom($resourcePath, 'dashboard-uptime-robot-tile');
     }
 }

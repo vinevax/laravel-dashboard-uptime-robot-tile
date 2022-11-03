@@ -18,8 +18,14 @@ class UptimeRobotTileComponent extends Component
     {
         $uptimeRobotStore = UptimeRobotStore::make();
 
+        if (config('dashboard.tiles.uptimerobot.blade') === 'original') {
+            $monitors = $uptimeRobotStore->monitors();
+        } else {
+            $monitors = $uptimeRobotStore->monitorsByStatus();
+        }
+
         return view('dashboard-uptime-robot-tile::tile', [
-            'monitors' => $uptimeRobotStore->monitors()
+            'monitors' => $monitors
         ]);
     }
 }

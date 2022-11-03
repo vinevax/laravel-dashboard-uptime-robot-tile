@@ -5,7 +5,7 @@
             @foreach($monitors as $monitor)
                 <li class="p-1">
                     <div class="flex justify-center">
-                        <span class="p-1 rounded-sm {{ $monitor['badge'] }}">
+                        <span class="p-1 rounded-sm {{ implode(' ', $monitor['badge']) }}">
                             {{ $monitor['status'] }}
                         </span>
                         <span class="p-1">

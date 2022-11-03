@@ -5,7 +5,13 @@
 
 This tile can be used on [the Laravel Dashboard](https://docs.spatie.be/laravel-dashboard).
 
+Original view...
+
 ![img](docs/screenshot.png)
+
+Alternative view for many monitors...
+
+![img](docs/capture.jpg)
 
 ## Installation
 
@@ -27,7 +33,16 @@ return [
         /* Monitors should be an array with ids of your monitors you want to display */
         'uptimerobot' => [
             'key' => env('UPTIMEROBOT_KEY'),
-            'monitors' => []
+            'blade' => 'multiple', // Or `multiple` for alternative tile
+            'monitors' => [],
+            'monitor_types' => [
+                1 => 'URL',
+                2 => 'Keyword',
+                3 => 'Ping',
+                4 => 'Port',
+                5 => 'Heartbeat'
+            ],
+            'uptime' => 1 // Set to 0 if fetching from Uptime Robot API lags
         ]   
     ]   
 ];
@@ -37,7 +52,7 @@ In `app/Console/Kernel.php` you should schedule the `VineVax\UptimeRobotTile\Com
 
 ````php
     // in app/console/Kernel.php
-    
+  
         protected function schedule(Schedule $schedule)
         {
             $schedule->command(\VineVax\UptimeRobotTile\Commands\FetchUptimeRobotDataCommand::class)->everyFiveMinutes();
@@ -59,6 +74,10 @@ If you want to customize the view used to render this tile, run this command:
 ```bash
 php artisan vendor:publish --provider="VineVax\UptimeRobotTile\UptimeRobotTileServiceProvider" --tag="dashboard-uptime-robot-tile-views"
 ```
+
+Please note that if you have published the view and then wish to switch between 'original' and 'multiple' options 
+for the blade file in dashboard.php you will need to remove tile.blade.php from 
+/resources/views/vendor/dashboard-uptime-robot-tile and then run the publish command again.
 
 ## Changelog
 
