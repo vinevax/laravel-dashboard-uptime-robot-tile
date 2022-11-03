@@ -21,6 +21,9 @@ You can install the package via composer:
 composer require vinevax/laravel-dashboard-uptime-robot-tile
 ```
 
+### ⚠️ Important if you want to use the alternative view
+In order to use the alternative view, you need to update the included Alpine.js script from version ```2``` to ```3```. To do this, remove the old script in your ```dashboard.php``` config file and add the following script ```https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js``` 
+
 ## Usage
 
 In the `dashboard` config file, you must add this configuration in the `tiles` key.
